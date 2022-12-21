@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Movie from "./Movie";
+import Movie from "../components/Movie"; // ..를 해야 상위폴더부터 시작
+import styles from "./Home.module.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -17,11 +18,11 @@ function Home() {
     getMovies();
   }, []);
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
         <h1>loading...</h1>
       ) : (
-        <div>
+        <div className={styles.movies}>
           {movies.map((movie) => (
             <Movie
               key={movie.id} //React.js에서만, map안에서 component들을 render할때 사용함.
